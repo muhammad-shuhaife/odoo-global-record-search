@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="global_search_config_view_list" model="ir.ui.view">
+        <field name="name">global.search.config.list</field>
+        <field name="model">global.search.config</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="model_id" options="{'no_create': True}"/>
+                <field name="priority"/>
+                <field name="exclude"/>
+                <field name="extra_field_ids" widget="many2many_tags" options="{'no_create': True}"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="global_search_config_action" model="ir.actions.act_window">
+        <field name="name">Global Search</field>
+        <field name="res_model">global.search.config</field>
+        <field name="view_mode">list</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Tune the record search</p>
+            <p>Exclude heavy models, change the order of results, or search extra fields such as a barcode.</p>
+        </field>
+    </record>
+
+    <menuitem id="global_search_config_menu"
+              name="Global Search"
+              parent="base.menu_administration"
+              action="global_search_config_action"
+              groups="base.group_system"
+              sequence="90"/>
+</odoo>

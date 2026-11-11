@@ -1,0 +1,65 @@
+// Keep Odoo's command palette layout, colors, and spacing unchanged. Add only
+// subtle motion to the palette, result rows, and pointer hover interaction.
+.o_command_palette {
+    animation: grs-palette-enter 160ms ease-out both;
+
+    .o_command {
+        animation: grs-command-enter 140ms ease-out both;
+        transition: transform 120ms ease, background-color 120ms ease;
+
+        &:hover {
+            transform: translateX(2px);
+        }
+    }
+
+    .o_command:nth-of-type(2) { animation-delay: 15ms; }
+    .o_command:nth-of-type(3) { animation-delay: 30ms; }
+    .o_command:nth-of-type(4) { animation-delay: 45ms; }
+    .o_command:nth-of-type(5) { animation-delay: 60ms; }
+    .o_command:nth-of-type(6) { animation-delay: 75ms; }
+
+    &.o_grs_closing {
+        animation: grs-palette-exit 160ms ease-in both;
+    }
+}
+
+@keyframes grs-palette-enter {
+    from {
+        opacity: 0;
+        translate: 0 -0.35rem;
+    }
+    to {
+        opacity: 1;
+        translate: 0 0;
+    }
+}
+
+@keyframes grs-command-enter {
+    from {
+        opacity: 0;
+        translate: 0 0.15rem;
+    }
+    to {
+        opacity: 1;
+        translate: 0 0;
+    }
+}
+
+@keyframes grs-palette-exit {
+    from {
+        opacity: 1;
+        translate: 0 0;
+    }
+    to {
+        opacity: 0;
+        translate: 0 -0.25rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .o_command_palette,
+    .o_command_palette .o_command {
+        animation: none !important;
+        transition: none !important;
+    }
+}
