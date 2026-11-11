@@ -1,0 +1,1 @@
+# odoo-global-record-search
